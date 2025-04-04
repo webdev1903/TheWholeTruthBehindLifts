@@ -1,55 +1,77 @@
-import { Box, Container, Grid, Text, Link, Flex, useColorMode } from '@chakra-ui/react';
+import { Box, Container, Flex, Text, Link, VStack, HStack, Icon, useColorMode } from '@chakra-ui/react';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <Box as="footer" bg={colorMode === 'light' ? 'gray.900' : 'gray.800'} color="white" py={10}>
+    <Box
+      as="footer"
+      py={{ base: 6, md: 10 }}
+      bg={colorMode === 'light' ? 'gray.100' : 'gray.800'}
+      color={colorMode === 'light' ? 'gray.700' : 'gray.300'}
+    >
       <Container maxW="container.xl">
-        <Grid templateColumns={{ base: '1fr', md: 'repeat(4, 1fr)' }} gap={8}>
-          <Box>
-            <Text fontSize="xl" fontWeight="bold" mb={4}>
+        <Flex
+          direction={{ base: 'column', md: 'row' }}
+          justify="space-between"
+          align={{ base: 'center', md: 'flex-start' }}
+          gap={{ base: 6, md: 0 }}
+        >
+          <VStack align={{ base: 'center', md: 'start' }} spacing={4}>
+            <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight="bold">
               The Whole Truth Behind Lifts
             </Text>
-            <Text color="gray.400">
-              Empowering individuals through evidence-based strength training and movement science.
+            <Text fontSize={{ base: 'sm', md: 'md' }} maxW={{ base: '300px', md: '400px' }} textAlign={{ base: 'center', md: 'left' }}>
+              Empowering individuals with evidence-based strength training knowledge.
             </Text>
-          </Box>
-          
-          <Box>
-            <Text fontWeight="bold" mb={4}>Quick Links</Text>
-            <Flex direction="column" gap={2}>
-              <Link href="/about" color="gray.400" _hover={{ color: 'white' }}>About Us</Link>
-              <Link href="/courses" color="gray.400" _hover={{ color: 'white' }}>Courses</Link>
-              <Link href="/resources" color="gray.400" _hover={{ color: 'white' }}>Resources</Link>
-              <Link href="/programs" color="gray.400" _hover={{ color: 'white' }}>Programs</Link>
-            </Flex>
-          </Box>
-          
-          <Box>
-            <Text fontWeight="bold" mb={4}>Resources</Text>
-            <Flex direction="column" gap={2}>
-              <Link href="/blog" color="gray.400" _hover={{ color: 'white' }}>Blog</Link>
-              <Link href="/research" color="gray.400" _hover={{ color: 'white' }}>Research</Link>
-              <Link href="/faq" color="gray.400" _hover={{ color: 'white' }}>FAQ</Link>
-              <Link href="/contact" color="gray.400" _hover={{ color: 'white' }}>Contact</Link>
-            </Flex>
-          </Box>
-          
-          <Box>
-            <Text fontWeight="bold" mb={4}>Connect With Us</Text>
-            <Flex gap={4}>
-              <Link href="#" color="gray.400" _hover={{ color: 'white' }}><FaFacebook size={24} /></Link>
-              <Link href="#" color="gray.400" _hover={{ color: 'white' }}><FaTwitter size={24} /></Link>
-              <Link href="#" color="gray.400" _hover={{ color: 'white' }}><FaInstagram size={24} /></Link>
-              <Link href="#" color="gray.400" _hover={{ color: 'white' }}><FaYoutube size={24} /></Link>
-            </Flex>
-          </Box>
-        </Grid>
-        
-        <Box mt={10} pt={6} borderTop="1px" borderColor="gray.700">
-          <Text textAlign="center" color="gray.400">
+          </VStack>
+
+          <VStack align={{ base: 'center', md: 'start' }} spacing={4}>
+            <Text fontSize={{ base: 'md', md: 'lg' }} fontWeight="bold">
+              Quick Links
+            </Text>
+            <VStack align={{ base: 'center', md: 'start' }} spacing={2}>
+              <Link href="/about" fontSize={{ base: 'sm', md: 'md' }}>
+                About Us
+              </Link>
+              <Link href="/features" fontSize={{ base: 'sm', md: 'md' }}>
+                Features
+              </Link>
+              <Link href="/contact" fontSize={{ base: 'sm', md: 'md' }}>
+                Contact
+              </Link>
+            </VStack>
+          </VStack>
+
+          <VStack align={{ base: 'center', md: 'start' }} spacing={4}>
+            <Text fontSize={{ base: 'md', md: 'lg' }} fontWeight="bold">
+              Connect With Us
+            </Text>
+            <HStack spacing={4}>
+              <Link href="https://facebook.com" isExternal>
+                <Icon as={FaFacebook} boxSize={{ base: 5, md: 6 }} />
+              </Link>
+              <Link href="https://twitter.com" isExternal>
+                <Icon as={FaTwitter} boxSize={{ base: 5, md: 6 }} />
+              </Link>
+              <Link href="https://instagram.com" isExternal>
+                <Icon as={FaInstagram} boxSize={{ base: 5, md: 6 }} />
+              </Link>
+              <Link href="https://youtube.com" isExternal>
+                <Icon as={FaYoutube} boxSize={{ base: 5, md: 6 }} />
+              </Link>
+            </HStack>
+          </VStack>
+        </Flex>
+
+        <Box
+          mt={{ base: 6, md: 10 }}
+          pt={{ base: 4, md: 6 }}
+          borderTop="1px"
+          borderColor={colorMode === 'light' ? 'gray.200' : 'gray.700'}
+        >
+          <Text fontSize={{ base: 'xs', md: 'sm' }} textAlign="center">
             © {new Date().getFullYear()} The Whole Truth Behind Lifts. All rights reserved.
           </Text>
         </Box>

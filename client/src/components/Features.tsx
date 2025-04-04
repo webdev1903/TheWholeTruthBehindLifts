@@ -1,56 +1,110 @@
-import { Box, Container, Grid, Heading, Text, Icon, useColorMode } from '@chakra-ui/react';
-import { FaGraduationCap, FaBook, FaUsers, FaChartLine } from 'react-icons/fa';
-
-const features = [
-  {
-    icon: FaGraduationCap,
-    title: 'Expert-Led Courses',
-    description: 'Learn from industry professionals with years of experience in strength training and movement science.'
-  },
-  {
-    icon: FaBook,
-    title: 'Comprehensive Resources',
-    description: 'Access a wealth of knowledge through our extensive library of articles, videos, and research papers.'
-  },
-  {
-    icon: FaUsers,
-    title: 'Community Support',
-    description: 'Join a community of like-minded individuals passionate about strength training and movement.'
-  },
-  {
-    icon: FaChartLine,
-    title: 'Progressive Programs',
-    description: 'Follow scientifically-backed training programs designed to help you achieve your fitness goals.'
-  }
-];
+import { Box, Container, Heading, Text, SimpleGrid, useColorMode } from '@chakra-ui/react';
+import { FaDumbbell, FaBook, FaUsers, FaChartLine } from 'react-icons/fa';
 
 const Features = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <Box py={20} bg={colorMode === 'light' ? 'white' : 'gray.800'}>
+    <Box py={{ base: 10, md: 20 }} bg={colorMode === 'light' ? 'white' : 'gray.900'}>
       <Container maxW="container.xl">
-        <Heading textAlign="center" mb={16} color={colorMode === 'light' ? 'blue.600' : 'blue.400'}>
-          What We Offer
+        <Heading
+          as="h2"
+          size={{ base: '2xl', md: '3xl' }}
+          textAlign="center"
+          mb={{ base: 8, md: 16 }}
+          color={colorMode === 'light' ? 'blue.600' : 'blue.400'}
+        >
+          Key Features
         </Heading>
-        <Grid templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }} gap={8}>
-          {features.map((feature, index) => (
+        <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={{ base: 6, md: 8 }}>
+          <Box
+            p={{ base: 4, md: 6 }}
+            borderRadius="lg"
+            bg={colorMode === 'light' ? 'gray.50' : 'gray.800'}
+            textAlign="center"
+          >
             <Box
-              key={index}
-              p={6}
-              borderRadius="lg"
-              boxShadow="md"
-              bg={colorMode === 'light' ? 'white' : 'gray.700'}
-              _hover={{ transform: 'translateY(-5px)', transition: 'all 0.3s' }}
-            >
-              <Icon as={feature.icon} w={10} h={10} color="blue.500" mb={4} />
-              <Heading as="h3" size="md" mb={2} color={colorMode === 'light' ? 'gray.700' : 'gray.200'}>
-                {feature.title}
-              </Heading>
-              <Text color={colorMode === 'light' ? 'gray.600' : 'gray.300'}>{feature.description}</Text>
-            </Box>
-          ))}
-        </Grid>
+              as={FaDumbbell}
+              w={{ base: 8, md: 10 }}
+              h={{ base: 8, md: 10 }}
+              color={colorMode === 'light' ? 'blue.500' : 'blue.400'}
+              mx="auto"
+              mb={4}
+            />
+            <Heading as="h3" size={{ base: 'sm', md: 'md' }} mb={2}>
+              Evidence-Based Training
+            </Heading>
+            <Text color={colorMode === 'light' ? 'gray.600' : 'gray.300'}>
+              Learn training methods backed by scientific research and proven results.
+            </Text>
+          </Box>
+
+          <Box
+            p={{ base: 4, md: 6 }}
+            borderRadius="lg"
+            bg={colorMode === 'light' ? 'gray.50' : 'gray.800'}
+            textAlign="center"
+          >
+            <Box
+              as={FaBook}
+              w={{ base: 8, md: 10 }}
+              h={{ base: 8, md: 10 }}
+              color={colorMode === 'light' ? 'blue.500' : 'blue.400'}
+              mx="auto"
+              mb={4}
+            />
+            <Heading as="h3" size={{ base: 'sm', md: 'md' }} mb={2}>
+              Comprehensive Resources
+            </Heading>
+            <Text color={colorMode === 'light' ? 'gray.600' : 'gray.300'}>
+              Access detailed guides, tutorials, and educational materials.
+            </Text>
+          </Box>
+
+          <Box
+            p={{ base: 4, md: 6 }}
+            borderRadius="lg"
+            bg={colorMode === 'light' ? 'gray.50' : 'gray.800'}
+            textAlign="center"
+          >
+            <Box
+              as={FaUsers}
+              w={{ base: 8, md: 10 }}
+              h={{ base: 8, md: 10 }}
+              color={colorMode === 'light' ? 'blue.500' : 'blue.400'}
+              mx="auto"
+              mb={4}
+            />
+            <Heading as="h3" size={{ base: 'sm', md: 'md' }} mb={2}>
+              Expert Community
+            </Heading>
+            <Text color={colorMode === 'light' ? 'gray.600' : 'gray.300'}>
+              Connect with certified professionals and like-minded individuals.
+            </Text>
+          </Box>
+
+          <Box
+            p={{ base: 4, md: 6 }}
+            borderRadius="lg"
+            bg={colorMode === 'light' ? 'gray.50' : 'gray.800'}
+            textAlign="center"
+          >
+            <Box
+              as={FaChartLine}
+              w={{ base: 8, md: 10 }}
+              h={{ base: 8, md: 10 }}
+              color={colorMode === 'light' ? 'blue.500' : 'blue.400'}
+              mx="auto"
+              mb={4}
+            />
+            <Heading as="h3" size={{ base: 'sm', md: 'md' }} mb={2}>
+              Progress Tracking
+            </Heading>
+            <Text color={colorMode === 'light' ? 'gray.600' : 'gray.300'}>
+              Monitor your progress and achieve your fitness goals effectively.
+            </Text>
+          </Box>
+        </SimpleGrid>
       </Container>
     </Box>
   );
